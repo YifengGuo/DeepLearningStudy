@@ -8,7 +8,7 @@
 #    here we use step function
 # 3. output: f(x) = w * x + b
 
-# perceptro training:
+# perceptron training:
 # set weights and bias as 0 initially
 # wi <- wi + delta_wi
 # b <- b + delta_b
