@@ -17,6 +17,10 @@
 # delta_b = ita(t - y)
 # ita is learning rate
 
+# here can I think perceptron updating weights in a little bit
+# brute way. w_new = w_old + delta_w and delta_w = ita * error * x
+# so if error is large, change from w_old to w_new is large
+#    if x (or importance) is large, change from w_old to w_new is also large
 
 class Perceptron(object):
 
