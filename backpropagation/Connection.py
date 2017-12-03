@@ -23,8 +23,9 @@ class Connection(object):
         calculate gradient
         :return: 
         '''
-        # calc by wji = wji + rate * delta_j * Xji
-        # and delta_j is downstream node delta
+        # from the derivative formula
+        # we have delta(Ed) / (delta Wji) = (delta Ed / delta net_j) * Xji
+        # and delta Ed / delta net_j is downstream delta named delta_j
         # Xji is input of downstream node and also the output of upstream node
         self.gradient = self.downstream_node.delta * self.upstream_node.output
 
@@ -41,6 +42,9 @@ class Connection(object):
         :param rate: 
         :return: 
         '''
+        # calc by wji = wji + rate * delta_j * Xji
+        # and delta_j is downstream node delta
+        # Xji is input of downstream node and also the output of upstream node
         self.calc_gradient()
         self.weight += rate * self.gradient
 
