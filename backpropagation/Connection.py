@@ -23,6 +23,9 @@ class Connection(object):
         calculate gradient
         :return: 
         '''
+        # calc by wji = wji + rate * delta_j * Xji
+        # and delta_j is downstream node delta
+        # Xji is input of downstream node and also the output of upstream node
         self.gradient = self.downstream_node.delta * self.upstream_node.output
 
     def get_gradient(self):
