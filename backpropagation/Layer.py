@@ -29,7 +29,7 @@ class Layer(object):
         calculate the output of whole layer
         :return: 
         '''
-        for node in self.nodes:
+        for node in self.nodes[:-1]:
             node.calc_output()
 
     def dump(self):
