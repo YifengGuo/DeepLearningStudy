@@ -22,9 +22,9 @@ import random
 def mean_square_error(vec1, vec2):
     return 0.5 * reduce(
         lambda a, b: a + b,
-        map(lambda v: (v[0] - v[1]) * (v[0] - v[1])),
-        zip(vec1, vec2)
-    )
+        map(lambda v: (v[0] - v[1]) * (v[0] - v[1]),
+            zip(vec1, vec2)
+            ))
 
 
 def gradient_check(network, sample_feature, sample_label):
@@ -35,11 +35,6 @@ def gradient_check(network, sample_feature, sample_label):
     :param sample_label:
     :return:
     '''
-    network_error = lambda vec1, vec2: \
-        0.5 * reduce(lambda a, b: a + b,
-                     map(lambda v: (v[0] - v[1]) * (v[0] - v[1]),
-                         zip(vec1, vec2)))
-
     # obtain gradient of each connection of this sample
     network.get_gradient(sample_feature, sample_label)
 
@@ -51,11 +46,11 @@ def gradient_check(network, sample_feature, sample_label):
         # add a very small value to the weight and re-calculate error
         epsilon = 0.0001
         conn.weight += epsilon
-        error1 = network_error(network.predict(sample_feature), sample_label)
+        error1 = mean_square_error(network.predict(sample_feature), sample_label)
 
         # substract a very small value to the weight and re-calculate error
         conn.weight -= 2 * epsilon
-        error2 = network_error(network.predict(sample_feature), sample_label)
+        error2 = mean_square_error(network.predict(sample_feature), sample_label)
 
         # based on the definition of derivative
         # delta_f(wji) / delta_wji = (f(wji + epsilon) - (wji - epsilon)) / (2 * epsilon)
