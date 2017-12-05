@@ -1,4 +1,4 @@
-# to check and correct the gradient of NN
+# normalize and denormalize input data
 
 
 class Normalizer(object):
