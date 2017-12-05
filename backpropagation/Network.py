@@ -63,7 +63,7 @@ class Network(object):
         output_nodes = self.layers[-1].nodes
         # calculate delta of output layer
         for i in range(len(label)):
-            output_nodes[i].calc_output_layer_delta[label[i]]
+            output_nodes[i].calc_output_layer_delta(label[i])
         # calculate delta of hidden layers
         for layer in self.layers[-2::-1]:  # from second last to the first layer
             for node in layer.nodes:
